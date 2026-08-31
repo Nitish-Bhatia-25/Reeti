@@ -8,6 +8,37 @@
 
   const romanIsh = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
 
+  const FLOWER_ICONS = {
+    marigold: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1">
+      <circle cx="12" cy="12" r="2.6"/>
+      <path d="M12 3.5c1.6 0 2.4 1.6 1.6 3.2C12.8 8.3 12 9 12 9s-.8-.7-1.6-2.3C9.6 5.1 10.4 3.5 12 3.5z"/>
+      <path d="M12 20.5c1.6 0 2.4-1.6 1.6-3.2C12.8 15.7 12 15 12 15s-.8.7-1.6 2.3c-.8 1.6 0 3.2 1.6 3.2z"/>
+      <path d="M20.5 12c0 1.6-1.6 2.4-3.2 1.6C15.7 12.8 15 12 15 12s.7-.8 2.3-1.6c1.6-.8 3.2 0 3.2 1.6z"/>
+      <path d="M3.5 12c0 1.6 1.6 2.4 3.2 1.6C8.3 12.8 9 12 9 12s-.7-.8-2.3-1.6c-1.6-.8-3.2 0-3.2 1.6z"/>
+      <path d="M17.5 6.5c1.1 1.1.6 2.9-1.1 3.3-1.7.4-2.7-.2-2.7-.2s.2-1 1.1-2.4c.9-1.4 1.6-1.7 2.7-.7z"/>
+      <path d="M6.5 17.5c-1.1-1.1-.6-2.9 1.1-3.3 1.7-.4 2.7.2 2.7.2s-.2 1-1.1 2.4c-.9 1.4-1.6 1.7-2.7.7z"/>
+      <path d="M17.5 17.5c-1.1 1.1-2.9.6-3.3-1.1-.4-1.7.2-2.7.2-2.7s1 .2 2.4 1.1c1.4.9 1.7 1.6.7 2.7z"/>
+      <path d="M6.5 6.5c-1.1-1.1-.6-2.9 1.1-3.3 1.7-.4 2.7.2 2.7.2s-.2 1-1.1 2.4C8.3 7.2 7.6 7.5 6.5 6.5z"/>
+    </svg>`,
+    cosmos: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1">
+      <circle cx="12" cy="12" r="1.8"/>
+      <path d="M12 12 4.8 8.3c-1-1.6.3-3.5 2-3 2.9.8 5.2 3.7 5.2 6.7z"/>
+      <path d="M12 12 8.3 19.2c-1.6 1-3.5-.3-3-2 .8-2.9 3.7-5.2 6.7-5.2z"/>
+      <path d="M12 12l7.2-3.7c1.6-1 3.5.3 3 2-.8 2.9-3.7 5.2-6.7 5.2z"/>
+      <path d="M12 12l3.7 7.2c1 1.6-.3 3.5-2 3-2.9-.8-5.2-3.7-5.2-6.7z"/>
+      <path d="M12 12l3.7-7.2c1-1.6 3.5-.3 3 2-.8 2.9-3.7 5.2-6.7 5.2z"/>
+    </svg>`
+  };
+
+  function divider() {
+    return `<svg class="divider" viewBox="0 0 132 16" fill="none" stroke="currentColor" stroke-width="0.9" xmlns="http://www.w3.org/2000/svg">
+      <line x1="4" y1="8" x2="52" y2="8"/>
+      <circle cx="66" cy="8" r="2.4" fill="currentColor" stroke="none"/>
+      <line x1="80" y1="8" x2="128" y2="8"/>
+    </svg>`;
+  }
+
+
   function buildSlide(page, i) {
     const el = document.createElement("div");
     el.className = "slide";
@@ -30,19 +61,20 @@
     if (page.type === "closing") {
       el.classList.add("slide-closing");
       el.innerHTML = `
+        ${divider()}
         <span class="kicker">the last page</span>
         <h1>${page.heading}</h1>
         <p>${page.message}</p>`;
       return el;
     }
 
-    // photo page
+    // photo page — alternates marigold / cosmos as its recurring motif
     photoIndex += 1;
     const variant = ((photoIndex - 1) % 4) + 1;
-    const shape = FRAME_SHAPES[(photoIndex - 1) % FRAME_SHAPES.length];
+    const flower = photoIndex % 2 === 1 ? "marigold" : "cosmos";
     const reverse = photoIndex % 2 === 0 ? " row-reverse" : "";
 
-    el.classList.add("slide-photo", `variant-${variant}`, `frame-shape-${shape}`);
+    el.classList.add("slide-photo", `variant-${variant}`, `on-${flower}`);
     if (reverse) el.classList.add("row-reverse");
 
     el.innerHTML = `
@@ -51,6 +83,8 @@
              onerror="this.replaceWith(Object.assign(document.createElement('div'), {className:'frame-placeholder', textContent:'Photo ${photoIndex}'}))">
       </div>
       <div>
+        <div class="flower-row">${FLOWER_ICONS[flower]}<span>${flower}</span></div>
+        ${divider()}
         <span class="page-mark">${romanIsh[photoIndex - 1] || photoIndex}</span>
         <p class="page-text">${page.text}</p>
       </div>`;
