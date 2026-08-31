@@ -191,7 +191,7 @@ html, body {
 /* ---------- closing slide sits on the botanical card ground too ---------- */
 
 .slide-closing {
-  background: url("assets/card-bg.jpg") right center / cover no-repeat;
+  background: url("assets/bg.jpg/card-bg.jpg") right center / cover no-repeat;
   color: var(--card-ink);
 }
 
@@ -238,7 +238,7 @@ html, body {
   align-items: center;
   gap: 1.9rem;
   padding-top: 7vh;
-  background: url("assets/card-bg.jpg") right center / cover no-repeat;
+  background: url("assets/bg.jpg/card-bg.jpg") right center / cover no-repeat;
   color: var(--card-ink);
 }
 
