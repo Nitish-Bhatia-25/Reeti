@@ -72,17 +72,15 @@
     photoIndex += 1;
     const variant = ((photoIndex - 1) % 4) + 1;
     const flower = photoIndex % 2 === 1 ? "marigold" : "cosmos";
-    const reverse = photoIndex % 2 === 0 ? " row-reverse" : "";
 
     el.classList.add("slide-photo", `variant-${variant}`, `on-${flower}`);
-    if (reverse) el.classList.add("row-reverse");
 
     el.innerHTML = `
       <div class="frame-wrap">
         <img src="${page.photo}" alt="" draggable="false"
              onerror="this.replaceWith(Object.assign(document.createElement('div'), {className:'frame-placeholder', textContent:'Photo ${photoIndex}'}))">
       </div>
-      <div>
+      <div class="text-block">
         <div class="flower-row">${FLOWER_ICONS[flower]}<span>${flower}</span></div>
         ${divider()}
         <span class="page-mark">${romanIsh[photoIndex - 1] || photoIndex}</span>
