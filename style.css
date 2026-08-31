@@ -191,7 +191,7 @@ html, body {
 /* ---------- closing slide sits on the botanical card ground too ---------- */
 
 .slide-closing {
-  background: radial-gradient(ellipse at 50% 0%, var(--card-bg-edge), var(--card-bg) 70%);
+  background: url("assets/card-bg.jpg") right center / cover no-repeat;
   color: var(--card-ink);
 }
 
@@ -205,7 +205,7 @@ html, body {
   width: 132px;
   height: 16px;
   color: var(--card-ink-soft);
-  margin: 0 auto 0.6rem;
+  margin: 0 0 0.6rem;
   display: block;
 }
 
@@ -217,6 +217,7 @@ html, body {
   font-size: 1.5rem;
   line-height: 1;
   margin-bottom: 0.9rem;
+  justify-content: flex-start;
 }
 
 .flower-row svg { width: 20px; height: 20px; }
@@ -232,10 +233,19 @@ html, body {
 /* ---------- photo pages ---------- */
 
 .slide-photo {
-  justify-content: center;
-  gap: 2.4rem;
-  background: radial-gradient(ellipse at 50% 0%, var(--card-bg-edge), var(--card-bg) 70%);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.9rem;
+  padding-top: 7vh;
+  background: url("assets/card-bg.jpg") right center / cover no-repeat;
   color: var(--card-ink);
+}
+
+.text-block {
+  align-self: flex-start;
+  text-align: left;
+  max-width: 60%;
 }
 
 .frame-wrap {
@@ -343,14 +353,8 @@ html, body {
 /* ---------- desktop refinements ---------- */
 
 @media (min-width: 760px) {
-  .slide-photo {
-    flex-direction: row;
-    text-align: left;
-    gap: 5.5rem;
-  }
-  .slide-photo.row-reverse { flex-direction: row-reverse; }
   .frame-wrap { width: min(30vw, 380px); }
-  .page-text { max-width: 32ch; }
+  .text-block { max-width: 42ch; }
 }
 
 /* ---------- reduced motion ---------- */
