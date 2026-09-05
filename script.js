@@ -38,6 +38,17 @@
     </svg>`;
   }
 
+  function cornerSprig(flower) {
+    const bloom = flower === "marigold" ? FLOWER_ICONS.marigold : FLOWER_ICONS.cosmos;
+    const stem = `<svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 36C5 27 8 18 16 13" stroke-linecap="round"/>
+        <path d="M16 13c-1 3-4 5-7 5" stroke-linecap="round"/>
+        <path d="M12 24c-1 3-4 4-6 3" stroke-linecap="round"/>
+      </svg>`;
+    return `<span class="frame-corner tl">${stem}<span style="position:absolute;top:-2px;left:8px;width:20px;height:20px;">${bloom}</span></span>
+      <span class="frame-corner br">${stem}<span style="position:absolute;top:-2px;left:8px;width:20px;height:20px;transform:rotate(180deg);">${bloom}</span></span>`;
+  }
+
 
   function buildSlide(page, i) {
     const el = document.createElement("div");
@@ -79,6 +90,7 @@
       <div class="frame-wrap">
         <img src="${page.photo}" alt="" draggable="false"
              onerror="this.replaceWith(Object.assign(document.createElement('div'), {className:'frame-placeholder', textContent:'Photo ${photoIndex}'}))">
+        ${cornerSprig(flower)}
       </div>
       <div class="text-block">
         <div class="flower-row">${FLOWER_ICONS[flower]}<span>${flower}</span></div>
