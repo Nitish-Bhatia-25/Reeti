@@ -93,7 +93,6 @@
         ${cornerSprig(flower)}
       </div>
       <div class="text-block">
-        <div class="flower-row">${FLOWER_ICONS[flower]}<span>${flower}</span></div>
         ${divider()}
         <span class="page-mark">${romanIsh[photoIndex - 1] || photoIndex}</span>
         <p class="page-text">${page.text}</p>
