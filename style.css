@@ -235,7 +235,7 @@ html, body {
 .slide-photo {
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.9rem;
   padding-top: 7vh;
   background: url("assets/bg.jpg/card-bg.jpg") right center / cover no-repeat;
