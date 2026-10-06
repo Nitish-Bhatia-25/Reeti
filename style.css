@@ -1,3 +1,4 @@
+
 :root {
   --bg-void: #0a1410;
   --forest-deep: #16261a;
@@ -151,6 +152,7 @@ html, body {
   max-width: 34ch;
   color: var(--parchment-dim);
   margin: 0;
+  white-space: pre-line;
 }
 
 .swipe-hint {
@@ -197,7 +199,7 @@ html, body {
 
 .slide-closing .kicker { color: var(--card-ink-soft); }
 .slide-closing h1 { color: var(--card-ink); text-shadow: none; }
-.slide-closing p { color: var(--card-ink-soft); }
+.slide-closing p { color: var(--card-ink-soft); max-width: 42ch; }
 
 /* ---------- botanical ornament, shared by photo + closing card pages ---------- */
 
@@ -302,6 +304,7 @@ html, body {
   font-size: clamp(1.1rem, 2.8vw, 1.3rem);
   line-height: 1.6;
   color: var(--card-ink-soft);
+  white-space: pre-line;
 }
 
 .page-mark {
