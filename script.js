@@ -57,7 +57,6 @@
     if (page.type === "landing") {
       el.classList.add("slide-landing");
       el.innerHTML = `
-        <span class="kicker">for Reeti</span>
         <h1>${page.heading}</h1>
         <p>${page.message}</p>
         <div class="swipe-hint">
@@ -73,8 +72,6 @@
       el.classList.add("slide-closing");
       el.innerHTML = `
         ${divider()}
-        <span class="kicker">the last page</span>
-        <h1>${page.heading}</h1>
         <p>${page.message}</p>`;
       return el;
     }
